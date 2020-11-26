@@ -1,0 +1,10 @@
+export const FETCH_EMAIL_DATA = 'FETCH_EMAIL_DATA';
+export const OPEN_MAIL = 'OPEN_MAIL';
+export const FILTER_MAIL = 'FILTER_MAIL';
+export const COMPOSE_MAIL = 'COMPOSE_MAIL';
+export const DISCARD_MESSAGE = 'DISCARD_MESSAGE';
+export const SEARCH_MAIL = 'SEARCH_MAIL';
+export const SEND_MAIL = 'SEND_MAIL';
+export const MOVE_TO = 'MOVE_TO';
+export const DELETE_MAIL = 'DELETE_MAIL';
+export const TOGGLE_STARED = 'TOGGLE_STARED';

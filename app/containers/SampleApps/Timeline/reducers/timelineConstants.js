@@ -1,0 +1,5 @@
+export const FETCH_TIMELINE_DATA = 'FETCH_TIMELINE_DATA';
+export const FETCH_COMMENT_DATA = 'FETCH_COMMENT_DATA';
+export const POST = 'POST';
+export const POST_COMMENT = 'POST_COMMENT';
+export const TOGGLE_LIKE = 'TOGGLE_LIKE';
