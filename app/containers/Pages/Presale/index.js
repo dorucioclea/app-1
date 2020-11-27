@@ -51,6 +51,67 @@ const data = [
 ];
 
 class Presale extends React.Component {
+
+  state = {
+    activeStep: 0,
+    teamCounter: 0,
+    currentValue: '',
+    tokenName: '',
+    tokenSymbol: '',
+    reservedAmounts: '',
+    reservedAddresses: '',
+    presaleRate: '',
+    presaleCaps: '',
+    presaleMinMax: '',
+    uniswapAmount: '',
+    uniswapRate: '',
+    infoLink: '',
+    govRate: '',
+    presaleStartTime: new Date(),
+    presaleEndTime: new Date(),
+    govStartTime: new Date(),
+    govEndTime: new Date(),
+    liqLockTime: new Date(),
+    freezeTimes: [new Date(), new Date(), new Date(), new Date(), new Date(), new Date(), new Date(), new Date(), new Date(), new Date()],
+    web3connect: null,
+    walletConnected: false,
+    walletAddress: '',
+  };
+
+  componentDidMount(){
+    this.connectWeb3();
+  }
+
+  async connectWeb3(){
+    var newWeb3 = null;
+    var linkedAccount = null;
+    if (window.ethereum){
+      newWeb3 = new Web3(window.ethereum);
+      window.ethereum.enable();
+      this.setState({ web3connect: newWeb3 });
+      linkedAccount = await newWeb3.eth.getAccounts();
+      console.log("Linked account is " + linkedAccount);
+      if (linkedAccount == null || linkedAccount == ''){
+        console.log("Not connected properly: ", linkedAccount);
+        return 0;
+      }
+      if (linkedAccount[0].substr(0,2) == '0x'){
+        this.setState({ walletAddress: linkedAccount });
+        this.setState({ walletConnected: true });
+      }
+    }
+    else if (window.web3) {
+      newWeb3 = new Web3(window.web3.currentProvider);
+      window.ethereum.enable();
+      newWeb3.eth.getAccounts(console.log);
+      this.setState({ web3connect: newWeb3 });
+      this.setState({ walletConnected: true });
+    }
+    else {
+      console.log("This is an unsupported browser!");
+    }
+  }
+
   render() {
     const { classes } = this.props;
     const title = brand.name + ' - Browse Single Presale';
@@ -82,6 +143,8 @@ class Presale extends React.Component {
             <Grid item xl={4} lg={4} md={4} sm={12} xs={12}></Grid>
             <Grid item xl={4} lg={4} md={4} sm={12} xs={12}>
               <Typography align="center">Participate in the presale now!</Typography>
+              <br/>
+              <Typography align="center">1 ETH = 500 CORE</Typography>
             </Grid>
             <Grid item xl={4} lg={4} md={4} sm={12} xs={12}></Grid>
           </Grid>

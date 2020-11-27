@@ -712,7 +712,13 @@ class VerticalStepper extends React.Component {
         <PapperBlock title="Create Presale" desc="Get started in just a few simple steps!" icon='ios-clipboard'>
           {walletConnected 
           ?
-            <div>Disclaimer: This process is entirely decentralized, we cannot be held reponsible for incorrect entry of information. Please ensure you enter all your details to the best accuracy possible.<br/>Also please note this is an alpha version and has been tested thoroughly by our team, but we cannot guarantee there will be no bugs. Use at your own risk!<br/><br/>Please also copy and edit the following <a href="https://docs.google.com/spreadsheets/d/1SiT69_cr4QE2QRBA1v2W0Mk37p5CU3dRURxjkPA-czE/edit?usp=sharing" target="_blank">Google Sheet</a> in order to share it in one of the input sections below.</div>
+            <div>
+              Connected Wallet: {('' + walletAddress + '').substr(0,6) + '...' + ('' + walletAddress + '').substr((('' + walletAddress + '').length-4),('' + walletAddress + '').length)}
+              <br/><br/>
+              Disclaimer: This process is entirely decentralized, we cannot be held reponsible for incorrect entry of information. Please ensure you enter all your details to the best accuracy possible.
+              <br/>Also please note this is an alpha version and has been tested thoroughly by our team, but we cannot guarantee there will be no bugs. Use at your own risk!
+              <br/><br/>Please also copy and edit the following <a href="https://docs.google.com/spreadsheets/d/1SiT69_cr4QE2QRBA1v2W0Mk37p5CU3dRURxjkPA-czE/edit?usp=sharing" target="_blank">Google Sheet</a> in order to share it in one of the input sections below.
+            </div>
           :
             <div>
               <Button
